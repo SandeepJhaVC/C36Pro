@@ -19,7 +19,8 @@ function setup() {
   foodStock.set(20);
   
   dog = createSprite(250,350,10,60);
-  dog.addImage("dogi",dogi);
+  dog.addImage(dogi);
+  dog.scale = 0.2;
 }
 
 
@@ -27,16 +28,25 @@ function draw() {
   background(46, 139, 87);
 
   if (keyWentDown(UP_ARROW)) {
+    dog.addImage(happyDog);
     writeStock(foodS);
-    dog.addImage(dogHappy)
+    
+  }
+  if (keyWentUp(UP_ARROW)) {
+    dog.addImage(dogi);
+    //writeStock(foodS);
+    
   }
 
   drawSprites();
   //add styles here
+  textSize(15);
   fill("blue");
   stroke("red");
   strokeWeight(5);
-  text("food: " + foodStock, 200, 200);
+  text("food: " + foodS, 100, 200);
+  textSize(29);
+  text("Please press UP ARROW to feed dog", 0, 100);
 
 }
 
