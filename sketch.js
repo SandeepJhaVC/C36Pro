@@ -17,7 +17,7 @@ async function setup() {
   database = firebase.database();
   foodStock = database.ref('food');
   foodStock.on("value", readStock);
-  foodStock.set(20);
+  //foodStock.set(20);
 
   dog = createSprite(250, 350, 10, 60);
   dog.addImage(dogi);
@@ -72,6 +72,7 @@ function draw() {
 }
 
 function readStock(data) {
+  foodObj.updateFoodStock(foodS);
   foodS = data.val();
 }
 

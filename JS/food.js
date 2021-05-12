@@ -4,12 +4,12 @@ class Food {
         this.lastFed;
         this.image = loadImage("images/Milk.png");
     }
-    getFoodStock() {
+    /*getFoodStock() {
         var foodStock = database.ref('foodStock');
         foodStock.on("value",function(data){
             gameState = data.val();
         })
-    }
+    }*/
     updateFoodStock(foodStock) {
         this.foodStock = foodStock;
     }
