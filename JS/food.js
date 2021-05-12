@@ -1,6 +1,7 @@
 class Food {
     constructor() {
-        var foodStock, lastFed;
+        this.foodStock=0;
+        this.lastFed;
         this.image = loadImage("images/Milk.png");
     }
     getFoodStock() {
@@ -9,16 +10,19 @@ class Food {
             gameState = data.val();
         })
     }
-    updateFoodStock() {
-        database.ref('/').update({
-            foodStock: state
-        })
+    updateFoodStock(foodStock) {
+        this.foodStock = foodStock;
+    }
+    getFedTime(lastFed){
+        this.lastFed = lastFed;
     }
     deductFood() {
-        var foodIndex = "food"+ foodStock;
-        database.ref(playerIndex).set({
-            food: lastFed
-        })
+        if(this.foodStock>0){
+            this.foodStock -= 1;
+        }
+    }
+    getFoodStock(){
+        return this.foodStock;
     }
     display() {
         var x = 80,y = 100;
