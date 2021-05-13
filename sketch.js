@@ -19,9 +19,9 @@ async function setup() {
   foodStock.on("value", readStock);
   //foodStock.set(20);
 
-  dog = createSprite(250, 350, 10, 60);
+  dog = createSprite(500, 350, 10, 60);
   dog.addImage(dogi);
-  dog.scale = 0.2;
+  dog.scale = 0.3;
 
   foodObj = new Food();
 
@@ -72,8 +72,9 @@ function draw() {
 }
 
 function readStock(data) {
-  foodObj.updateFoodStock(foodS);
+  
   foodS = data.val();
+  foodObj.updateFoodStock(foodS);
 }
 
 function writeStock(x) {
