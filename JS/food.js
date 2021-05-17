@@ -1,6 +1,6 @@
 class Food {
     constructor() {
-        this.foodStock=0;
+        this.foodStock = 0;
         this.lastFed;
         this.image = loadImage("images/Milk.png");
     }
@@ -13,19 +13,28 @@ class Food {
     updateFoodStock(foodStock) {
         this.foodStock = foodStock;
     }
-    getFedTime(lastFed){
+    getFedTime(lastFed) {
         this.lastFed = lastFed;
     }
     deductFood() {
-        if(this.foodStock>0){
+        if (this.foodStock > 0) {
             this.foodStock -= 1;
         }
     }
-    getFoodStock(){
+    getFoodStock() {
         return this.foodStock;
     }
+    bedroom() {
+        background(bedimg, 550, 500);
+    }
+    garden() {
+        background(gardimg, 550, 500);
+    }
+    washroom() {
+        background(washimg, 550, 500);
+    }
     display() {
-        var x = 80,y = 100;
+        var x = 80, y = 100;
 
         imageMode(CENTER);
         image(this.image, 720, 220, 70, 70);
