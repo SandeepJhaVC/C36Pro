@@ -4,6 +4,7 @@ var dog
 var addFood, feedPet, fedTime, lastFed, foodObj;
 var bedimg, washimg, gardimg;
 var readState, changeState, gameState;
+var currentTime = hour();
 
 function preload() {
   //load images here
@@ -43,6 +44,12 @@ async function setup() {
   addFood = createButton("Add Food");
   addFood.position(800, 95);
   addFood.mousePressed(addFoods);
+
+  fedTime = database.ref('FeedTime');
+  fedTime.on("value", function (data) {
+    lastFed = data.val();
+  });
+
 }
 
 
@@ -56,10 +63,9 @@ function draw() {
 
   //foodObj.display();
 
-  fedTime = database.ref('FeedTime');
-  fedTime.on("value", function (data) {
-    lastFed = data.val();
-  });
+  if(mousePressed(feed)){
+    gameState = "hungry";
+  }
 
   if (gameState !== "Hungry") {
     feed.hide();
@@ -71,7 +77,7 @@ function draw() {
     dog.addImage(dogi);
   }
 
-  var currentTime = hour();
+  
   if (currentTime === (lastFed + 1)) {
     update("Playing");
     foodObj.garden();
@@ -118,11 +124,11 @@ function writeStock(x) {
 
 function feedDog() {
   dog.addImage(happyDog);
-  foodS -= 1;
+  //foodS -= 1;
   foodObj.updateFoodStock(foodObj.getFoodStock() - 1);
   database.ref('/').update({
     food: foodObj.getFoodStock(),
-    fedTime: hour()
+    feedTime: hour()
   })
 }
 
