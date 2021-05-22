@@ -4,12 +4,6 @@ class Food {
         this.lastFed;
         this.image = loadImage("images/Milk.png");
     }
-    /*getFoodStock() {
-        var foodStock = database.ref('foodStock');
-        foodStock.on("value",function(data){
-            gameState = data.val();
-        })
-    }*/
     updateFoodStock(foodStock) {
         this.foodStock = foodStock;
     }
@@ -23,15 +17,6 @@ class Food {
     }
     getFoodStock() {
         return this.foodStock;
-    }
-    bedroom() {
-        background(bedimg, 550, 500);
-    }
-    garden() {
-        background(gardimg, 550, 500);
-    }
-    washroom() {
-        background(washimg, 550, 500);
     }
     display() {
         var x = 80, y = 100;
@@ -50,5 +35,14 @@ class Food {
             }
         }
 
+    }
+    bedroom() {
+        background(bedroom, 550, 500);
+    }
+    garden() {
+        background(garden, 550, 500);
+    }
+    washroom() {
+        background(washroom, 550, 500);
     }
 }
